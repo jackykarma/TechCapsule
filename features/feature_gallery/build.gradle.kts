@@ -4,8 +4,10 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+apply(from = "${rootProject.rootDir}/features/feature_gallery/feature.config.gradle.kts")
+
 android {
-    namespace = "com.jacky.techcapsule"
+    namespace = "com.jacky.features.gallery"
     compileSdk = project.extra["compileSdkVer"] as Int
     defaultConfig {
         minSdk = project.extra["minSdkVer"] as Int
@@ -16,18 +18,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        create("release") {  // 创建release签名配置
-            storeFile = file("/Users/limao/Jacky/androidprojects/jacky")
-            storePassword = "00000000"
-            keyAlias = "jacky"
-            keyPassword = "00000000"
-        }
-    }
-
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -65,3 +57,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+

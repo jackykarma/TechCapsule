@@ -21,4 +21,17 @@ dependencyResolutionManagement {
 
 rootProject.name = "TechCapsule"
 include(":app")
- 
+
+val dirArray = arrayOf("uilayer", "domainlayer", "datalayer", "foundation", "features")
+dirArray.forEach { dirName ->
+    val dir = File(rootProject.projectDir, dirName)
+    if (dir.exists() && dir.isDirectory) {
+        dir.listFiles()?.forEach { moduleDir ->
+            if (moduleDir.isDirectory) {
+                val modulePath = ":$dirName:${moduleDir.name}"
+                include(modulePath)
+                project(modulePath).projectDir = moduleDir
+            }
+        }
+    }
+}

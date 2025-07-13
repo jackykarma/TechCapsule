@@ -1,4 +1,6 @@
 *.iml
+.kotlin
+features/feature_gallery/build/
 .idea
 .gradle
 /local.properties
