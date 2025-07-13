@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("therouter") // 应用the router插件
+    kotlin("kapt") // 启用kapt 插件功能
 }
 
 android {
@@ -64,4 +66,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // the router插件API库
+    implementation(libs.the.router)
+    // the router插件注解解析器
+    kapt(libs.the.router.apt)
 }

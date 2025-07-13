@@ -8,5 +8,6 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.the.router) apply false // 插件声明，后续所有项目均可应用通过插件id应用插件
 }
 
